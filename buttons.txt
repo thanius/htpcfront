@@ -9,16 +9,3 @@ plejmo.png;http://www.plejmo.com
 netflix.png;http://www.netflix.com
 spotify.png;http://play.spotify.com
 youtube.png;http://youtube.com/tv
-
-htpcfront.png;#
-htpcfront.png;#
-htpcfront.png;#
-htpcfront.png;#
-htpcfront.png;#
-
-htpcfront.png;#
-htpcfront.png;#
-htpcfront.png;#
-htpcfront.png;#
-htpcfront.png;#
-
