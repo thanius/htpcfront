@@ -1,6 +1,12 @@
 # htpcfront
 A simple button based menu for web based HTPC's (using Google Chrome)
 
+![alt text][channels]
+![alt text][google]
+
+[channels]: https://github.com/thanius/htpcfront/channels.png "Screenshot of channels (default) page"
+[google]: https://github.com/thanius/htpcfront/google.png "Screenshot of Google search page"
+
 ## Features!
 
 - Up to 25 awesome buttons!
