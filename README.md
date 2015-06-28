@@ -2,10 +2,6 @@
 A simple button based menu for web based HTPC's (using Google Chrome)
 
 ![alt text][channels]
-![alt text][google]
-
-[channels]: https://github.com/thanius/htpcfront/blob/master/channels.png "Screenshot of channels (default) page"
-[google]: https://github.com/thanius/htpcfront/blob/master/google.png "Screenshot of Google search page"
 
 ## Features!
 
@@ -20,3 +16,8 @@ A simple button based menu for web based HTPC's (using Google Chrome)
 2. Edit 'buttons.txt' with format: "button.png;http://url.com" (without quotes)
 3. Upload 'htpcfront/' folder to a webserver with PHP support
 4. Point HTPC webbrowser to webserver
+
+![alt text][google]
+
+[channels]: https://github.com/thanius/htpcfront/blob/master/channels.png "Screenshot of channels (default) page"
+[google]: https://github.com/thanius/htpcfront/blob/master/google.png "Screenshot of Google search page"
