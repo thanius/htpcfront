@@ -11,9 +11,6 @@ A simple button based menu for web based HTPC's (using Google Chrome)
 ## Configuration
 
 1. Add your buttons to 'buttons/' folder (360x200 for best result)
-2. Edit 'buttons.txt' with format:
-```
-button.png;http://url.com
-```
+2. Edit 'buttons.txt' with format: "button.png;http://url.com" (without quotes)
 3. Upload 'htpcfront/' folder to a webserver with PHP support
 4. Point HTPC webbrowser to webserver
