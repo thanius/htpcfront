@@ -199,7 +199,7 @@ body {
 
     <!-- GOOGLE SEARCH PAGE -->
     <div id="google_frame" class="frame fade-in">
-      <img src="images/google.png" class="google_logo"><br />
+      <a href="http://www.google.com"><img src="images/google.png" class="google_logo"></a><br />
 
       <script>
         // Reset form when backing in browser
