@@ -36,6 +36,10 @@
   -webkit-transform-style: preserve-3d;
 }
 
+.no_cursor {
+  cursor: none;
+}
+
 .frame {
   width: 100%;
   margin: auto;
@@ -191,7 +195,7 @@ body {
 
   <div id="blackness" class="blackness">&nbsp;</div>
 
-  <div id="main" class="fade-in main">
+  <div id="main" class="no_cursor fade-in main">
 
     <!-- GOOGLE SEARCH PAGE -->
     <div id="google_frame" class="frame fade-in">
@@ -228,7 +232,7 @@ body {
     </div>
 
     <!-- CHANNELS (FRONT) PAGE -->
-    <div id="channels" class="frame fade-in">
+    <div id="channels" class="frame no_cursor fade-in">
       <?php
         $dataFromFile = file('buttons.txt');
         $button_image = array();
@@ -249,10 +253,25 @@ body {
         <?php
           $i=0;
           foreach ($button_image as $filename) {
-            echo "<a href=\"" . $button_url[$i] . "\" onmouseout=\"window.status=''\"><img id=\"button\" class=\"button\" src=\"buttons/" . $filename . "\"></a>";
+            echo "<a href=\"" . $button_url[$i] . "\" onmouseout=\"window.status=''\"><img id=\"button\" class=\"button locked no_cursor\" onclick=\"return false\" src=\"buttons/" . $filename . "\"></a>";
             $i=$i+1;
           }
         ?>
+
+        <script>
+          // Add small delay so that we can fade out the page
+          $("a").click(function (e) {
+            e.preventDefault();                   
+            var goTo = this.getAttribute("href");
+
+            $("#main").removeClass("fade-in").addClass("fade-out");
+
+            setTimeout(function(){
+              window.location = goTo;
+            },1000);       
+          }); 
+        </script>
+
       </div>
     </div>
 
@@ -261,7 +280,7 @@ body {
       <div class="google_card">
 
         <div class="front">
-          <img id="google_button" class="google_button" src="images/ggl_btn.png">
+          <img id="google_button" class="google_button no_cursor" src="images/ggl_btn.png">
           <script>
             $("#google_button").click(function() {
               $("#channels").addClass("fade-out");
@@ -287,7 +306,7 @@ body {
                 $("#channels").removeClass("fade-out").css("display","block");
               }, 550);
 
-              $(".google_card").removeClass('flipped')
+              $(".google_card").removeClass("flipped")
             });
          </script>
        </div>
@@ -301,6 +320,14 @@ $(document).ready(function() {
   setTimeout(function() {
     $("#google_frame").css("display","none");
     $("#channels").removeClass("fade-out").css("display","block");
+
+    // Wait two more seconds to remove locked button state
+    setTimeout(function() {
+      $("img#button").removeClass("locked no_cursor").prop('onclick',null).off('click');
+      $("div#main").removeClass("no_cursor");
+      $("img#google_button").removeClass("no_cursor");
+    }, 3000);
+
   }, 1000);
 });
 </script>
