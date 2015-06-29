@@ -201,6 +201,14 @@ body {
     <div id="google_frame" class="frame fade-in">
       <img src="images/google.png" class="google_logo"><br />
 
+      <script>
+        // Reset form when backing in browser
+        $(window).bind("pageshow", function() {
+          var form = $('form'); 
+          form[0].reset();
+        });
+      </script>
+
       <div class="search_div">
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
           <input type="text" name="query" class="google_search" value="" autofocus>
@@ -220,7 +228,6 @@ body {
           $query = test_input($_POST["query"]);
 
           if (!preg_match("/^((https?|ftp)?:\/\/|www\.)?([-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]\.\w{2,4}$)/i",$query)) {
-            $query = preg_replace('!\s+!', '+', $query);
             header("location: http://www.google.com/search?q=$query");
           } else {
             $query_array=explode("/",$query);
