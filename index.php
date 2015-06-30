@@ -1,7 +1,8 @@
 <?php ob_start(); ?>
-
 <html>
 <head>
+<title>HTPC front</title>
+
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <style type="text/css">
 
@@ -34,9 +35,14 @@
   background-image:url("images/bkg.png");
   color: #fff;
   -webkit-transform-style: preserve-3d;
+  z-index: 2;
 }
 
-.no_cursor {
+.no_click {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
   cursor: none;
 }
 
@@ -90,8 +96,8 @@ body {
   display: none;
 }
 
-.blackness {
-  background: #000;
+.flashbang {
+  background: #fff;
   width: 100%;
   height: 100%;
 }
@@ -183,7 +189,7 @@ body {
     <img src="images/ggl_btn.png" width="1" height="1" alt="" />
     <img src="images/google.png" width="1" height="1" alt="" />
     <img src="buttons/htpcfront.png" width="1" height="1" alt="" />
-   
+
     <?php
       $directory = "buttons/";
       $images = glob($directory . "*.png");
@@ -193,9 +199,11 @@ body {
 
   </div>
 
-  <div id="blackness" class="blackness">&nbsp;</div>
+  <div id="flashbang" class="flashbang"></div>
 
-  <div id="main" class="no_cursor fade-in main">
+  <div id="clickkiller" class="no_click"></div>
+
+  <div id="main" class="fade-in main">
 
     <!-- GOOGLE SEARCH PAGE -->
     <div id="google_frame" class="frame fade-in">
@@ -204,7 +212,7 @@ body {
       <script>
         // Reset form when backing in browser
         $(window).bind("pageshow", function() {
-          var form = $('form'); 
+          var form = $('form');
           form[0].reset();
         });
       </script>
@@ -239,7 +247,7 @@ body {
     </div>
 
     <!-- CHANNELS (FRONT) PAGE -->
-    <div id="channels" class="frame no_cursor fade-in">
+    <div id="channels" class="frame fade-in">
       <?php
         $dataFromFile = file('buttons.txt');
         $button_image = array();
@@ -249,37 +257,33 @@ body {
         foreach ($dataFromFile as $line) {
           if ($line != "\n" && $i < 20) {
             list($btn_img, $btn_url) = explode(';', $line, 2);
-            $button_image[$i] = $btn_img;
-            $button_url[$i] = $btn_url;
+            $button_image[$i] = trim($btn_img);
+            $button_url[$i] = trim($btn_url);
             $i=$i+1;
           }
         }
+     
+        $i=0;
+        foreach ($button_image as $filename) {
+          echo "<a href=\"" . $button_url[$i] . "\"><img id=\"button\" class=\"button\" src=\"buttons/" . $filename . "\"></a>";
+          $i=$i+1;
+        }
       ?>
 
-      <div class="button_container">
-        <?php
-          $i=0;
-          foreach ($button_image as $filename) {
-            echo "<a href=\"" . $button_url[$i] . "\" onmouseout=\"window.status=''\"><img id=\"button\" class=\"button locked no_cursor\" onclick=\"return false\" src=\"buttons/" . $filename . "\"></a>";
-            $i=$i+1;
-          }
-        ?>
+      <script>
+        // Add small delay so that we can fade out the page
+        $("a").click(function (e) {
+          e.preventDefault();
+          var goTo = this.getAttribute("href");
 
-        <script>
-          // Add small delay so that we can fade out the page
-          $("a").click(function (e) {
-            e.preventDefault();                   
-            var goTo = this.getAttribute("href");
+          $("#main").removeClass("fade-in").addClass("fade-out");
 
-            $("#main").removeClass("fade-in").addClass("fade-out");
+          setTimeout(function(){
+            window.location = goTo;
+          },1000);
+        });
+      </script>
 
-            setTimeout(function(){
-              window.location = goTo;
-            },1000);       
-          }); 
-        </script>
-
-      </div>
     </div>
 
     <!-- PAGE SWITCH BUTTON (GOOGLE/CHANNELS) -->
@@ -287,7 +291,7 @@ body {
       <div class="google_card">
 
         <div class="front">
-          <img id="google_button" class="google_button no_cursor" src="images/ggl_btn.png">
+          <img id="google_button" class="google_button" src="images/ggl_btn.png">
           <script>
             $("#google_button").click(function() {
               $("#channels").addClass("fade-out");
@@ -321,22 +325,21 @@ body {
    </div>
  </div>
 
-<script>
-$(document).ready(function() { 
-    $("#blackness").fadeOut(500);
-  setTimeout(function() {
-    $("#google_frame").css("display","none");
-    $("#channels").removeClass("fade-out").css("display","block");
+ <script>
+   $(document).ready(function() {
+    $("#flashbang").fadeOut(500);
 
-    // Wait two more seconds to remove locked button state
     setTimeout(function() {
-      $("img#button").removeClass("locked no_cursor").prop('onclick',null).off('click');
-      $("div#main").removeClass("no_cursor");
-      $("img#google_button").removeClass("no_cursor");
-    }, 3000);
+      $("#google_frame").css("display","none");
+      $("#channels").removeClass("fade-out").css("display","block");
 
-  }, 1000);
-});
+     // Enable cursor and clicking
+      setTimeout(function() {
+        $("#clickkiller").css("display","none");
+      }, 3000);
+    }, 1000);
+  });
 </script>
+
 </body>
 </html>
