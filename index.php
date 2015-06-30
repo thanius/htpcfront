@@ -248,6 +248,7 @@ body {
 
     <!-- CHANNELS (FRONT) PAGE -->
     <div id="channels" class="frame fade-in">
+
       <?php
         $dataFromFile = file('buttons.txt');
         $button_image = array();
@@ -262,13 +263,14 @@ body {
             $i=$i+1;
           }
         }
-     
+
         $i=0;
         foreach ($button_image as $filename) {
           echo "<a href=\"" . $button_url[$i] . "\"><img id=\"button\" class=\"button\" src=\"buttons/" . $filename . "\"></a>";
           $i=$i+1;
         }
       ?>
+
 
       <script>
         // Add small delay so that we can fade out the page
