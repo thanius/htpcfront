@@ -1,4 +1,4 @@
-# htpcfront
+# htpcfront 2.0
 A simple button based menu for web based HTPC's (using Google Chrome)
 
 ![alt text][channels]
@@ -14,13 +14,13 @@ A simple button based menu for web based HTPC's (using Google Chrome)
 2. Install ImageMagick PHP5 plugin
 3. Copy or move HTPC folder to web path
 4. Shutdown script: Give sudo permissions to www-data in /etc/sudoers:
-   www-data ALL = NOPASSWD: /var/www/html/includes/shutdown.sh
+  - www-data ALL = NOPASSWD: /var/www/html/includes/shutdown.sh
 
 ## Configuration
 1. First run:
-   Add your buttons to 'buttons/' folder (360x200 for best result) 
-     OR:
-   Upload them using the awesome image uploader on configuration page
+  - Add your buttons to 'buttons/' folder (360x200 for best result) 
+  - OR:
+  - Upload them using the awesome image uploader on configuration page
 
 2. Enter URL in field underneath image on button
 3. Drag and sort channels in prefered order
