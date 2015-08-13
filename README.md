@@ -16,15 +16,18 @@ A simple button based menu for web based HTPC's (using Google Chrome)
 4. Shutdown script: Give sudo permissions to www-data in /etc/sudoers:
   - www-data ALL = NOPASSWD: /var/www/html/includes/shutdown.sh
 5. Give all permissions to www-data:
-  - sudo chown -R www-data:www-data /var/www/html/*
+```
+sudo chown -R www-data:www-data /var/www/html/*
+```
 6. Give write permissions to 'buttons/' and 'includes/':
-  - sudo chmod 775 buttons/ includes/
+```
+ sudo chmod 775 buttons/ includes/
+```
 
 ## Configuration
 1. First run:
-  - Add your buttons to 'buttons/' folder (360x200 for best result) 
-  - OR:
-  - Upload them using the awesome image uploader on configuration page
+  - Either) Add your buttons to 'buttons/' folder (360x200 for best result) 
+  - Or) Upload them using the awesome image uploader on configuration page
 
 2. Enter URL in field underneath image on button
 3. Drag and sort channels in prefered order
