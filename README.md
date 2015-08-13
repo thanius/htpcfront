@@ -14,14 +14,14 @@ A simple button based menu for web based HTPC's (using Google Chrome)
 2. Install ImageMagick PHP5 plugin
 3. Copy or move HTPC folder to web path
 4. Shutdown script: Give sudo permissions to www-data in /etc/sudoers:
-  www-data ALL = NOPASSWD: /var/www/html/includes/shutdown.sh
+  - www-data ALL = NOPASSWD: /var/www/html/includes/shutdown.sh
 6. Fix permissions:
 
-  - Give all permissions to www-data:
+- Give all permissions to www-data:
 ```
 sudo chown -R www-data:www-data /var/www/html/*
 ```
-  - Give write permissions to 'buttons/' and 'includes/':
+- Give write permissions to 'buttons/' and 'includes/':
 ```
  sudo chmod 775 buttons/ includes/
 ```
