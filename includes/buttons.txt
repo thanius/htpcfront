@@ -1,0 +1,12 @@
+svtplay.png;http://www.svtplay.se
+36810play.png;http://www.tv3play.se
+tv4play.png;http://www.tv4play.se
+5911play.png;http://www.kanal5play.se
+magine_tv.png;http://www.magine.com
+netflix.png;http://www.netflix.com
+plextv.png;http://192.168.0.4:32400/web
+spotify.png;http://play.spotify.com
+youtube.png;http://www.youtube.com/tv
+plejmo.png;http://www.plejmo.com
+viaplay.png;http://www.viaplay.se
+sf_anytime.png;http://www.sfanytime.se

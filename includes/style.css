@@ -1,0 +1,425 @@
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+
+.fade-in {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -webkit-animation-fill-mode:forwards;
+  -webkit-animation-duration:0.5s;
+}
+
+.fade-out {
+  opacity:1;
+  -webkit-animation:fadeOut ease-in 1;
+  -webkit-animation-fill-mode:forwards;
+  -webkit-animation-duration:0.5s;
+}
+
+.fade-in#main {
+  -webkit-animation-delay: 0.5s;
+  -webkit-animation-duration: 1s;
+}
+
+.fade-out#main {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 1s;
+}
+
+html, body {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  color: #fff;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-image:url("../images/bkg.png");
+  margin: 0 auto;
+  -webkit-transform-style: preserve-3d;
+}
+
+#clickkiller {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  cursor: none;
+}
+
+#flashbang {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: fixed;
+}
+
+.frame {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  z-index: 1;
+}
+
+#google_frame {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#google_logo {
+  width:35%;
+  padding-bottom: 2%;
+}
+
+#config_frame {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: none;
+}
+
+#config_contents {
+  width: 95%;
+  position: absolute;
+  top: 50%;
+  padding-top: 2vw;
+  -webkit-transform: translateY(-50%);
+}
+
+#configbutton_cell_container {
+  position: relative;
+}
+
+.configbutton_cell {
+  display:inline-block;
+  width: 14vw;
+  height: 10vw;
+  margin: 0.8%;
+}
+
+.configbutton_cell .bkg {
+  background: #bbb;
+  border: 2px solid #fff;
+  position: relative;
+  height: 100%;
+  -webkit-border-radius: 10px;
+}
+
+.configbutton_cell .add_chnl_bkg {
+  position: absolute;
+  width: 14%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.configbutton_cell .bkg .wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.configbutton_cell .bkg .add_chnl_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ui-sortable-placeholder {
+  display:inline-block;
+  width: 14vw;
+  height: 10vw;
+  margin: 0.8%;
+  -webkit-border-radius: 10px;
+  background: #fff;
+  opacity: 0.1;
+}
+
+.croparea.config {
+  width: 90%;
+  height: 6.5vw;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  overflow:hidden;
+}
+
+.addbutton {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 100%;
+  margin-top: -200%;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+#add_channel {
+  opacity: 0.25;
+  max-width: 8vw;
+  -webkit-transform: translate3d(0, 12.5%, 0);
+}
+
+.config_input {
+  width: 83.5%;
+  padding: 3%;
+  border: 0px;
+  outline: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.remove_channel {
+  width: 20%;
+  position: absolute;
+  right: -5%;
+  top: -10%;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-out;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.remove_channel:hover {
+  z-index: 9999;
+  opacity: 0.9;
+  -webkit-transition: all 0.25s ease-in;
+  -webkit-transform: translate3d(0, 0, 0);
+  cursor: pointer;
+}
+
+.config_button {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #fff;
+  width: 34%;
+  margin: 2%;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.button {
+  border-style: solid;
+  border-width: 4px;
+  border-color: #fff;
+  width: 17%;
+  margin: 0.5%;
+  vertical-align: middle;
+  z-index: 1;
+  -webkit-border-radius: 10px;
+  -webkit-filter: brightness(0.5);
+  -webkit-transition: all 0.35s ease-out;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.button:hover {
+  -webkit-filter: brightness(1.0);
+  -webkit-transition: all 0.35s ease-in;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+
+#google_search {
+  width: 100%;
+  height: auto;
+  padding: 1% 7% 1% 2%;
+  margin: 0 auto;
+  outline: 0px;
+  border: 1px solid #fff;
+  font-size: 200%;
+  -webkit-border-radius: 10px;
+  -webkit-box-sizing: border-box;
+}
+
+#search_icon {
+  max-width: 4%;
+  position: absolute;
+  right: 2%;
+  margin-left: 8.5%;
+  outline: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#search_div {
+  width: 40%;
+  height: 6%;
+  position: relative;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+#shutdown_container {
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+}
+
+#shutdown_dialog {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subpage_title {
+  margin-top: 10px;
+  font-size: 40px;
+  font-family: "Oswald", sans;
+  font-style: light;
+  font-weight: 400;
+  cursor: default;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+  text-transform: uppercase;
+}
+
+#config_title {
+  padding-left: 10px;
+  font-size: 4vw;
+  font-family: "Oswald", sans;
+  font-style: light;
+  font-weight: 400;
+  cursor: default;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.5);
+  text-transform: uppercase;
+}
+
+.shutdown_dialog_button {
+  font-size: 30px;
+  font-family: "Oswald", sans;
+  font-style: bold;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  -webkit-filter: brightness(0.5);
+}
+
+.shutdown_dialog_button:hover {
+  -webkit-filter: brightness(1);
+}
+
+#google_button_container {
+  bottom: 0.9vw;
+}
+
+#powerconfig_container {
+  top: 0.9vw;
+  z-index: 9999;
+}
+
+#powerbutton {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-out;
+}
+
+#powerbutton:hover {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+
+#save_container {
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  right: 1.4vw;
+}
+
+#save_button {
+  width: 3vw;
+  left: 0px;
+  cursor: pointer;
+  position: absolute;
+  display: none;
+}
+
+#google_button, #powerbutton, #home_button, #config_button {
+  width: 4vw;
+  cursor: pointer;
+  position: absolute;
+}
+
+#google_button {
+  -webkit-filter: grayscale(100%);
+}
+
+.flip-container {
+  right: 0.9vw;
+  position: absolute;
+  -webkit-perspective: 1000;
+}
+
+.flipped {
+  -webkit-transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 4vw;
+    height: 4vw;
+}
+
+.flipper, flipper.google, flipper.powerconfig {
+  position: relative;
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+}
+
+.front, .back {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+}
+
+.front {
+  z-index: 4;
+}
+
+.back {
+  -webkit-transform: rotateY(180deg);
+}
+
+.input_addbutton {
+  display: none;
+}
+
+.button_form {
+top: 50%;
+-webkit-transform: translateY(-50%);
+font-size: 2px;
+position: absolute;
+}
+
+.grab {
+ cursor: -webkit-grab;
+}
+
+.grabbing {
+  cursor: -webkit-grabbing;
+}
